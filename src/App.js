@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { CharacterSearch } from './CharacterSearch';
+import { CharacterSearch } from './components/CharacterSearch';
 
 function App() {
   return (
