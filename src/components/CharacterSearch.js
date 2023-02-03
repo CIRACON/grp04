@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { CharacterPage } from "./CharacterPage";
 let allCharacters = [];
 
 export const CharacterSearch = () => {
@@ -22,7 +23,10 @@ export const CharacterSearch = () => {
         <>
             <p>Search for Star Wars Characters.</p>
             <input onChange={e => setSearchTerm(e.target.value)} value={searchTerm} />
-            {displayedCharacters.map(character => <p><a href={character.url}>{character.name}</a></p>)}
+            {displayedCharacters.map(character => {
+                /* <p><a href={character.url}>{character.name}</a></p> */
+                <CharacterPage id={character.id} />
+            })}
         </>
     )
 }
