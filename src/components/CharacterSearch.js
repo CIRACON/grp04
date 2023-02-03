@@ -39,18 +39,20 @@ async function getPeople() {
 
     while (url) {
         try {
-
             const newfetch = await fetch(url)
                 .then(res => res.json())
-                .then(res => { url = res.next; return res })
+                .then(res => { url = res.next; return res }) //.then(res => { console.log(res); return res })
                 .then(res => res.results)
-                .then(res => res.map(p => ({ ...p, id: +getPersonIdFromUrl(p.url) })));
-            allCharacters.push(...newfetch);
+                .then(res => res.map(p => ({ ...p, id: +getPersonIdFromUrl(p.url) })))
+            //.then(res => { console.log(res); return res })
+            //.then(newfetch => allCharacters.push(...newfetch))
+            //.catch(err => { console.error(err); throw "quitting" });
 
-            //console.log(allCharacters);
+            allCharacters.push(...newfetch);
         }
         catch (ex) {
             console.error(ex.message);
+            throw "Quitting";
         }
     }
     console.log({ allCharacters });
